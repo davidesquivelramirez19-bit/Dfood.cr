@@ -585,16 +585,133 @@
   }
 
   /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    nav { padding: 16px 24px; }
-    .nav-links { display: none; }
-    .hero { padding: 120px 24px 60px; }
-    .hero-stats { grid-template-columns: 1fr; }
-    section { padding: 70px 24px; }
-    .services-grid { grid-template-columns: 1fr; }
-    .form-inner { grid-template-columns: 1fr; gap: 40px; }
-    footer { flex-direction: column; gap: 20px; text-align: center; padding: 40px 24px; }
+  /* ── HAMBURGER MENU ── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
   }
+  .hamburger span {
+    display: block;
+    width: 24px; height: 2px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: transform .3s, opacity .3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 72px; left: 0; right: 0;
+    background: rgba(13,40,24,0.98);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 24px 28px 32px;
+    z-index: 99;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    transition: color .2s;
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover { color: var(--lime); }
+
+  /* ── TABLET ── */
+  @media (max-width: 900px) {
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    nav .btn-primary { display: none; }
+    .hamburger { display: flex; }
+
+    .hero { padding: 100px 20px 50px; }
+    .hero > div { padding: 0 20px; }
+    .hero h2 { font-size: clamp(22px, 5.5vw, 36px); }
+    .hero p { font-size: 14px; }
+    .hero-stats { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .stat-value { font-size: 24px; }
+    .stat-card { padding: 20px 22px; }
+
+    section { padding: 60px 20px; }
+
+    .carousel-slide { height: 300px; }
+    .slide-info h3 { font-size: 20px; }
+    .slide-info p { font-size: 12px; }
+
+    .services-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .service-card { padding: 26px 22px; }
+
+    .form-inner { grid-template-columns: 1fr; gap: 40px; }
+    .form-box { padding: 32px 28px; }
+
+    footer { flex-direction: column; gap: 20px; text-align: center; padding: 40px 20px; }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 540px) {
+    nav { padding: 12px 16px; }
+    .nav-logo { width: 40px; height: 40px; }
+    .nav-text h1 { font-size: 15px; }
+    .nav-text span { font-size: 9px; }
+
+    .hero { padding: 88px 16px 44px; }
+    .hero > div { padding: 0 16px; }
+    .hero-badge { font-size: 11px; padding: 6px 14px; }
+    .hero h2 { font-size: clamp(20px, 6.5vw, 30px); margin-bottom: 14px; }
+    .hero p { font-size: 13px; margin-bottom: 24px; }
+    .hero-ctas { flex-direction: column; gap: 12px; }
+    .btn-primary, .btn-outline { text-align: center; padding: 15px 24px; font-size: 14px; }
+    .hero-stats { grid-template-columns: 1fr; gap: 12px; margin-top: 36px; }
+    .stat-card { padding: 18px 20px; }
+    .stat-value { font-size: 22px; }
+    .stat-label { font-size: 10px; }
+    .stat-desc { font-size: 12px; }
+
+    section { padding: 50px 16px; }
+    .section-title { font-size: clamp(22px, 6vw, 32px); }
+    .section-sub { font-size: 14px; }
+    .section-tag { font-size: 10px; }
+
+    .carousel-slide { height: 240px; }
+    .slide-info { left: 20px; bottom: 20px; }
+    .slide-info h3 { font-size: 17px; }
+    .slide-info p { font-size: 11px; }
+    .carousel-btn { width: 40px; height: 40px; font-size: 16px; }
+
+    .services-grid { grid-template-columns: 1fr; gap: 14px; }
+    .service-card { padding: 24px 20px; }
+    .service-icon { font-size: 28px; margin-bottom: 14px; }
+    .service-card h3 { font-size: 17px; }
+    .service-card p { font-size: 13px; }
+
+    .form-box { padding: 26px 20px; border-radius: 18px; }
+    .form-box h3 { font-size: 20px; margin-bottom: 20px; }
+    .form-row { grid-template-columns: 1fr; gap: 0; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea { font-size: 15px; padding: 13px 16px; }
+    .btn-wa { font-size: 14px; padding: 16px; }
+
+    .contact-detail span { font-size: 13px; }
+
+    footer { padding: 32px 16px; gap: 16px; }
+    footer p { font-size: 12px; }
+  }
+
 </style>
 </head>
 <body>
@@ -614,7 +731,16 @@
     <li><a href="#contacto">Contacto</a></li>
   </ul>
   <a href="#contacto" class="btn-primary" style="padding:12px 24px;font-size:13px;">Solicitar cotización</a>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#servicios" onclick="closeMenu()">Servicios</a>
+  <a href="#eventos" onclick="closeMenu()">Eventos</a>
+  <a href="#contacto" onclick="closeMenu()">Contacto</a>
+  <a href="#contacto" onclick="closeMenu()" style="color:var(--lime);font-weight:700;">Solicitar cotización →</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -630,7 +756,7 @@
     <div class="hero-stats">
       <div class="stat-card">
         <div class="stat-label">Cobertura</div>
-        <div class="stat-value">2 a 300 personas</div>
+        <div class="stat-value">2 a 3000 personas</div>
         <div class="stat-desc">Desde reuniones íntimas hasta producciones grandes con logística gastronómica completa.</div>
       </div>
       <div class="stat-card">
@@ -719,7 +845,7 @@
     <div class="service-card">
       <span class="service-icon">🎪</span>
       <h3>Eventos Masivos</h3>
-      <p>Con capacidad para servir hasta 300 personas, organizamos la logística completa para festivales, ferias y grandes activaciones de marca.</p>
+      <p>Con capacidad para servir hasta 3000 personas, organizamos la logística completa para festivales, ferias y grandes activaciones de marca.</p>
     </div>
     <div class="service-card">
       <span class="service-icon">📦</span>
@@ -835,6 +961,7 @@
   </div>
 </section>
 
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-brand">
@@ -923,6 +1050,20 @@ _Mensaje enviado desde dfood.cr_`;
     const url = `https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}`;
     window.open(url, '_blank');
   }
+
+  // ── HAMBURGER MENU ──
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const btn  = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    btn.classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  }
+  // Close menu on scroll
+  window.addEventListener('scroll', closeMenu, { passive: true });
 </script>
 </body>
 </html>
